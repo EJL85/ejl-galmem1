@@ -11,6 +11,7 @@ Make a local database and setup a `knexfile` to connect to it.
 Make a migration that creates the following database table:
 
 `resolution`
+
 | key | name       | data type                 |
 | --- | ---------- | ------------------------- |
 | PK  | id         | auto-incrementing integer |
