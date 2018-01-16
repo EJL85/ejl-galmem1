@@ -39,7 +39,7 @@ Seed your database with some data:
 | field      | value             |
 | ---------- | ----------------- |
 | id         | 3                 |
-| name       | Fez               |
+| name       | Anti-Chamber      |
 | developer  | Demruth           |
 | rating     | 8.1               |
 
@@ -54,10 +54,10 @@ Make a connection to your database in the `database-connection.js` file with the
 
 Fill out the `queries.js` file with the following:
 
-* `list()` should return a promise that resolves with all of the data in the `resolution` table as an array
+* `list()` should return a promise that resolves with all of the data in the `game` table as an array
 * `read(id)` should return a promise that resolves with the record with a matching `id` as an object
-* `create(resolution)` should return a promise that inserts a resolution object and resolves to the created database record as an object
-* `update(id, resolution)` should return a promise that updates a resolution record matching `id` with the data in `resolution` and resolves to the updated database record as an object
+* `create(game)` should return a promise that inserts a game object and resolves to the created database record as an object
+* `update(id, game)` should return a promise that updates a game record matching `id` with the data in `game` and resolves to the updated database record as an object
 * `delete(id)` should return a promise that removes the record matching `id` and resolves to nothing
 
 ### Deployment
