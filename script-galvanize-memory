@@ -1,0 +1,36 @@
+# !/bin/bash
+
+echo "Paste Github Repo: ";
+read repo;
+git clone $repo;
+echo "Which drill number? ";
+read drillNumber;
+cd galvanize-memory/drills/version-$drillNumber;
+echo $PWD;
+npm install;
+echo "Database name from knexfile: ";
+read dbname;
+createdb $dbname;
+knex migrate:latest;
+knex seed:run;
+mocha --exit;
+if [ $drillNumber == 1 ]
+  then
+    tablename=resolution
+fi
+if [ $drillNumber == 2 ]
+  then
+    tablename=coffee
+fi
+if [ $drillNumber == 3 ]
+  then
+    tablename=game
+fi
+psql -d $dbname -c "SELECT * FROM $tablename";
+knex migrate:rollback;
+psql -d $dbname -c "SELECT * FROM $tablename";
+dropdb $dbname;
+cd ..;
+cd ..;
+cd ..;
+rm -rf galvanize-memory
