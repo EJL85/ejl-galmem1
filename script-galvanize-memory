@@ -5,13 +5,16 @@ read repo;
 git clone $repo;
 echo "Which drill number? ";
 read drillNumber;
-cd galvanize-memory/drills/version-$drillNumber;
+echo "What is the folder path?"
+read filename;
+cd $filename;
 echo $PWD;
 npm install;
 echo "Database name from knexfile: ";
 read dbname;
 createdb $dbname;
 knex migrate:latest;
+knex seed:run;
 knex seed:run;
 mocha --exit;
 if [ $drillNumber == 1 ]
@@ -33,4 +36,4 @@ dropdb $dbname;
 cd ..;
 cd ..;
 cd ..;
-rm -rf galvanize-memory
+rm -rf $filename;
