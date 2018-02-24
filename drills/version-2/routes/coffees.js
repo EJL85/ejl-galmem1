@@ -13,7 +13,7 @@ router.get("/:id", (request, response, next) => {
     queries.read(request.params.id).then(coffee => {
         coffee
             ? response.json({coffee})
-            : response.sendStatus(404)
+            : response.status(404).json({message: 'Not found'})
     }).catch(next);
 });
 
@@ -25,7 +25,7 @@ router.post("/", (request, response, next) => {
 
 router.delete("/:id", (request, response, next) => {
     queries.delete(request.params.id).then(() => {
-        response.sendStatus(204);
+        response.status(204).json({deleted: true});
     }).catch(next);
 });
 
