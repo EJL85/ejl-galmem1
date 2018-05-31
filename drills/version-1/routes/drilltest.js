@@ -4,22 +4,22 @@ const router = express.Router();
 const queries = require('../queries');
 
 router.get("/", (request, response, next) => {
-    queries.list().then(resolutions => {
-        response.json({resolutions});
+    queries.list().then(drilltest => {
+        response.json({drilltest});
     }).catch(next);
 });
 
 router.get("/:id", (request, response, next) => {
-    queries.read(request.params.id).then(resolution => {
-        resolution
-            ? response.json({resolution})
+    queries.read(request.params.id).then(hero => {
+        hero
+            ? response.json({hero})
             : response.status(404).json({message: 'Not found'})
     }).catch(next);
 });
 
 router.post("/", (request, response, next) => {
-    queries.create(request.body).then(resolution => {
-        response.status(201).json({resolution: resolution});
+    queries.create(request.body).then(hero => {
+        response.status(201).json({hero: hero});
     }).catch(next);
 });
 
@@ -30,8 +30,8 @@ router.delete("/:id", (request, response, next) => {
 });
 
 router.put("/:id", (request, response, next) => {
-    queries.update(request.params.id, request.body).then(resolution => {
-        response.json({resolution: resolution[0]});
+    queries.update(request.params.id, request.body).then(hero => {
+        response.json({hero: hero[0]});
     }).catch(next);
 });
 
