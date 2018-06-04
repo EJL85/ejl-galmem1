@@ -3,11 +3,11 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-const drilltest = require("./routes/drilltest");
+const resolutions = require("./routes/resolutions");
 
 app.use(bodyParser.json());
 
-app.use("/drilltest", drilltest);
+app.use("/resolutions", resolutions);
 
 app.use(notFound)
 app.use(errorHandler)
